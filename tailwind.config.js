@@ -1,5 +1,4 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
-import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -10,6 +9,33 @@ export default {
         './resources/js/**/*.vue',
     ],
 
+    daisyui: {
+        themes: [
+          {
+            mytheme: {
+
+    "primary": "#005dff",
+
+    "secondary": "#2900ff",
+
+    "accent": "#005ec6",
+
+    "neutral": "#040815",
+
+    "base-100": "#20253b",
+
+    "info": "#36bcff",
+
+    "success": "#00de4a",
+
+    "warning": "#ffa900",
+
+    "error": "#e1465c",
+              },
+            },
+          ],
+        },
+
     theme: {
         extend: {
             fontFamily: {
@@ -18,5 +44,7 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        require('daisyui'),
+    ],
 };

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -60,4 +61,30 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+
+    public function user_data(Request $request) {
+        User::create($request->all());
+    }
+
+    public function user_delete($id){
+        $user = User::find($id);
+        $user->delete();
+
+    }
+
+    public function picture_update(Request $request) {
+
+        $user = User::find(Auth::user()->id);
+        if(isset($request->picture)) {
+            $filename = "user".time().".".$request->picture->extension();
+            $filepath = "user";
+            $request->picture->storeAs($filepath,$filename,'public');
+            $user->picture = $filename;
+        }
+
+        $user->save();
+
+    }
+
 }
