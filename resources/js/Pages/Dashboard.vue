@@ -1,6 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, useForm } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
 defineProps({
     user: Array,
@@ -13,6 +14,8 @@ const form = useForm({
     email: '',
     password: '',
 })
+
+const toggle = ref(true);
 
 const submit = () => {
     form.post(
@@ -52,11 +55,11 @@ const UserData = (userId) => {
                             <form @submit.prevent="submit">
                                 <div class="flex flex-col gap-5">
                                     <label for="">Name</label>
-                                    <input type="text" v-model="form.name" class="input input-primary border-none">
+                                    <input type="text" v-model="form.name" required class="input input-primary border-none">
                                     <label for="">Email</label>
-                                    <input type="text" v-model="form.email" class="input input-primary border-none">
+                                    <input type="text" v-model="form.email" required class="input input-primary border-none">
                                     <label for="">Password</label>
-                                    <input type="text" v-model="form.password" class="input input-primary border-none">
+                                    <input type="text" v-model="form.password" required class="input input-primary border-none">
                                     <button class="btn glass bg-primary btn-primary">Submit</button>
                                 </div>
                             </form>
@@ -72,8 +75,22 @@ const UserData = (userId) => {
                              {{ users }}
                             </pre> -->
 
+                            <button class="btn btn-primary" @click="toggle = ! toggle" >Toggle</button>
 
+                            <Transition
+                            enter-active-class="animate__animated animate__rotateIn"
+                            leave-active-class="animate__animated animate__rotateOut"
+                            >
+                                <h1 v-if="toggle">iftekher mahmud pervez</h1>
+                            </Transition>
+
+
+                        <TransitionGroup
+                        enter-active-class="animate__animated animate__fadeInDown"
+                        leave-active-class="animate__animated animate__fadeOutDown"
+                        >
                             <div v-for="user in users" :key="user.id"
+
                                 class="card flex flex-row items-center justify-evenly m-2 w-[25%] flex-grow glass">
                                 <div class="card-body">
                                     <p>Id: {{ user.id }} </p>
@@ -84,9 +101,10 @@ const UserData = (userId) => {
                                     <button @click.prevent="UserData(user.id)" class="btn glass bg-error btn-error">delete</button>
                                 </div>
                             </div>
+                        </TransitionGroup>
+
 
                         </div>
-
 
                     </div>
                 </div>

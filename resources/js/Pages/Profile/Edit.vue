@@ -3,7 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import DeleteUserForm from './Partials/DeleteUserForm.vue';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
-import { Head, useForm, usePage } from '@inertiajs/vue3';
+import { useForm, usePage } from '@inertiajs/vue3';
 
 defineProps({
     mustVerifyEmail: {
@@ -19,10 +19,15 @@ const form = useForm({
     picture:user.picture
 })
 
+const user_path = "/storage/user/";
+
 const pic_change = (e) => {
-    form.picture = e.target.files
+    form.picture = e.target.files[0]
     form.post(route('picture.update'),{
-        onSuccess: () => form.reset()
+        onSuccess: () => {
+            location.reload();
+            return form.reset();
+        }
     })
 }
 
@@ -39,7 +44,7 @@ const pic_change = (e) => {
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                    <img :src="form.picture" class="size-48 rounded-lg" alt="picture">
+                    <img :src="user_path+form.picture" class="size-48 rounded-lg" alt="picture">
                     <input type="file" @change="pic_change" class="mt-4 file-input border-none file-input-primary">
                 </div>
 
