@@ -81,7 +81,7 @@ const UserData = (userId) => {
                             enter-active-class="animate__animated animate__rotateIn"
                             leave-active-class="animate__animated animate__rotateOut"
                             >
-                                <h1 v-if="toggle">iftekher mahmud pervez</h1>
+                                 <h1 v-if="toggle">iftekher mahmud pervez</h1>
                             </Transition>
 
 
