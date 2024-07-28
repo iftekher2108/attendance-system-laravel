@@ -5,6 +5,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import SlideMenu from "@/Components/side_menu.vue";
 import { Link } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
@@ -13,11 +14,11 @@ const showingNavigationDropdown = ref(false);
 <template>
     <div>
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            <nav class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+            <nav class="bg-white top-0 sticky dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
-                        <div class="flex">
+                        <div class="flex items-center">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
@@ -32,7 +33,11 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink>
+                                <slot name="header" />
                             </div>
+
+
+
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -135,17 +140,26 @@ const showingNavigationDropdown = ref(false);
                     </div>
                 </div>
             </nav>
-
-            <!-- Page Heading -->
-            <header class="bg-white dark:bg-gray-800 shadow" v-if="$slots.header">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <slot name="header" />
-                </div>
-            </header>
-
             <!-- Page Content -->
             <main>
+
+                <div class="flex lg:flex-row md:flex-col sm:flex-col gap-4 p-5">
+
+                <div class=" basis-3/12 bg-green-500 p-4 rounded-md">
+                <div class="flex items-center justify-center my-5">
+                    <h1>iftekher mahmud</h1>
+                </div>
+                    <SlideMenu/>
+                </div>
+
+                <div class="basis-9/12 col-span-6 bg-red-400 p-5 rounded-md">
                 <slot />
+                
+                </div>
+
+            </div>
+
+
             </main>
         </div>
     </div>
