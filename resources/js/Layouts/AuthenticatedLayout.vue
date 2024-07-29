@@ -3,7 +3,6 @@ import { ref } from 'vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import SlideMenu from "@/Components/side_menu.vue";
 import { Link } from '@inertiajs/vue3';
@@ -29,9 +28,6 @@ const showingNavigationDropdown = ref(false);
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
-                                </NavLink>
                                 <slot name="header" />
                             </div>
 
@@ -122,17 +118,17 @@ const showingNavigationDropdown = ref(false);
 
                 <div class="flex lg:flex-row md:flex-col sm:flex-col gap-3 p-4">
 
-                    <div class=" basis-3/12 bg-[#379777] p-1 rounded-2xl">
-                        <div class="flex items-center justify-center my-5">
-                            <h1>iftekher mahmud</h1>
+                    <div class=" basis-3/12 bg-primary p-1 rounded-2xl">
+                        <div class="flex items-center justify-center m-3 mx-10">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbz49jfzelLcn17vVACrpwjD7lDBCGriaggg&s" class="object-cover rounded-xl" alt="Logo">
                         </div>
                         <SlideMenu />
                     </div>
 
 
-                    <div class="basis-9/12 col-span-6 bg-[#2F3645] p-1 rounded-2xl">
+                    <div class="basis-9/12 col-span-6 bg-slate-200 dark:bg-[#2F3645] p-1 rounded-2xl">
 
-                        <div class="p-6 text-gray-100 rounded-2xl">
+                        <div class="p-6 text-gray-900 dark:text-gray-100 rounded-2xl">
                             <slot />
                         </div>
 

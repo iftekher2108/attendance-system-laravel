@@ -16,14 +16,14 @@ defineProps({
 const user = usePage().props.auth.user;
 
 const form = useForm({
-    picture:user.picture
+    picture: user.picture
 })
 
 const user_path = "/storage/user/";
 
 const pic_change = (e) => {
     form.picture = e.target.files[0]
-    form.post(route('picture.update'),{
+    form.post(route('picture.update'), {
         onSuccess: () => {
             location.reload();
             return form.reset();
@@ -34,6 +34,7 @@ const pic_change = (e) => {
 </script>
 
 <template>
+
     <Head title="Profile" />
 
     <AuthenticatedLayout>
@@ -42,28 +43,30 @@ const pic_change = (e) => {
         </template>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                    <img :src="user_path+form.picture" class="size-48 rounded-lg" alt="picture">
-                    <input type="file" @change="pic_change" class="mt-4 file-input border-none file-input-primary">
-                </div>
+            <header>
+                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">Profile Picture Information</h2>
 
-                <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                    <UpdateProfileInformationForm
-                        :must-verify-email="mustVerifyEmail"
-                        :status="status"
-                        class="max-w-xl"
-                    />
-                </div>
-
-                <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                    <UpdatePasswordForm class="max-w-xl" />
-                </div>
-
-                <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                    <DeleteUserForm class="max-w-xl" />
-                </div>
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    Update your account's profile Picture information.
+                </p>
+            </header>
+            <div class="p-4">
+                <img :src="user_path + form.picture" class="size-48 rounded-lg" alt="picture">
+                <input type="file" @change="pic_change" class="mt-4 file-input border-none file-input-primary">
             </div>
+            <hr class="opacity-25">
+            <div class="p-4">
+                <UpdateProfileInformationForm :must-verify-email="mustVerifyEmail" :status="status" class="max-w-xl" />
+            </div>
+            <hr class="opacity-25">
+            <div class="p-4">
+                <UpdatePasswordForm class="max-w-xl" />
+            </div>
+            <hr class="opacity-25">
+            <div class="p-4">
+                <DeleteUserForm class="max-w-xl" />
+            </div>
+
         </div>
     </AuthenticatedLayout>
 </template>

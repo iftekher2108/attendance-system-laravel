@@ -14,15 +14,15 @@ export default {
           {
             mytheme: {
 
-    "primary": "#005dff",
+    "primary": "#478CCF",
 
-    "secondary": "#2900ff",
+    "secondary": "#116D6E",
 
     "accent": "#005ec6",
 
     "neutral": "#040815",
 
-    "base-100": "#26355D",
+    "base-100": "#304463",
 
     "info": "#36bcff",
 
