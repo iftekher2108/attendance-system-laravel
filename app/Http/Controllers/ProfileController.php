@@ -63,16 +63,6 @@ class ProfileController extends Controller
     }
 
 
-    public function user_data(Request $request) {
-        User::create($request->all());
-    }
-
-    public function user_delete($id){
-        $user = User::find($id);
-        $user->delete();
-
-    }
-
     public function picture_update(Request $request) {
 
         $user = User::find(Auth::user()->id);

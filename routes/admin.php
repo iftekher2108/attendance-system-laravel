@@ -10,8 +10,7 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/dashboard', function () {
     $user = Auth::user();
-    $users = User::orderBy('id','desc')->get();
-    return Inertia::render('Dashboard',compact('user','users'));
+    return Inertia::render('Dashboard',compact('user'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
