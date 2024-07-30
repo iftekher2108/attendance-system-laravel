@@ -51,8 +51,11 @@ const pic_change = (e) => {
                 </p>
             </header>
             <div class="p-4">
-                <img :src="user_path + form.picture" class="size-48 rounded-lg" alt="picture">
-                <input type="file" @change="pic_change" class="mt-4 file-input border-none file-input-primary">
+                <div class="max-w-xl">
+                    <img :src="user_path + form.picture" class="size-48 rounded-lg" alt="picture">
+                    <input type="file" @change="pic_change" class="mt-4 file-input border-none w-full file-input-primary">
+                </div>
+
             </div>
             <hr class="opacity-25">
             <div class="p-4">

@@ -23,9 +23,20 @@ defineProps({
         </template>
 
 
-           <div>
-            dashboard content
+        <div class="flex flex-wrap gap-3">
+            <div class="card rounded-md p-10 grow glass bg-primary">
+
             </div>
+
+            <div class="card rounded-md p-10 grow glass bg-secondary">
+
+            </div>
+
+            <div class="card rounded-md p-10 grow glass bg-accent">
+
+            </div>
+
+        </div>
 
 
     </AuthenticatedLayout>

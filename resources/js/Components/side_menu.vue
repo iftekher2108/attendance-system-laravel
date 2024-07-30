@@ -47,7 +47,7 @@
                 </details>
             </li>
 
-            <li><a>Item 3</a></li>
+            <li> <a> System Settings</a></li>
         </ul>
     </div>
 </template>
